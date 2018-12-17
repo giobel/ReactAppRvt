@@ -107,8 +107,8 @@ const sizeElements = {
   datasets: [
     {
       label: 'File Size',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: 'rgba(255,51,0,0.2)',
+      borderColor: 'rgba(255,51,0,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(255,99,132,1)',
@@ -136,8 +136,8 @@ const elementTypes = {
   datasets: [
     {
       label: 'Types count',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: 'rgba(255,51,0,0.2)',
+      borderColor: 'rgba(255,51,0,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
       hoverBorderColor: 'rgba(255,99,132,1)',
@@ -263,6 +263,57 @@ scales: {
 }
 
 }
+
+
+const Sheets = {
+  labels: this.state.members.map(x=>x.date),
+  datasets: [
+    {
+      label: 'Sheets count',
+      backgroundColor: 'rgba(255,51,0,0.2)',
+      borderColor: 'rgba(255,51,0,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: this.state.members.map(x => x.sheetsCount),
+      fill:false
+    },
+    {
+      label: 'Views count',
+      backgroundColor: 'rgba(0,0,132,0.2)',
+      borderColor: 'rgba(0,0,132,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: this.state.members.map(x => x.viewsCount),
+      fill:false
+    },
+    {
+      label: 'Viewports count',
+      backgroundColor: 'rgba(0,153,0,0.2)',
+      borderColor: 'rgba(0,153,0,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: this.state.members.map(x => x.viewportsCount),
+      fill:false
+    }
+  ]
+};
+
+
+const sheetsOptions = {
+  title: {
+    display: true,
+    text: 'Sheets, Views, Viewports count',
+    fontSize: 26
+},
+legend: {
+  display: true,
+  position: 'bottom'
+},
+
+}
     return (
       
 
@@ -273,8 +324,9 @@ scales: {
         <Grid
         width={768}
         gap={24}>
-        <div><Line data = {sizeElements}   options={title}/></div>
+        <div><Line data = {sizeElements} options={title}/></div>
         <div><Line data = {elementTypes} options = {typeCountTitle} /></div>
+        <div><Line data = {Sheets} options = {sheetsOptions} /></div>
       </Grid>
 
       </div>
