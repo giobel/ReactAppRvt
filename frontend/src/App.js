@@ -312,8 +312,90 @@ legend: {
   display: true,
   position: 'bottom'
 },
+scales: {
+
+  xAxes: [
+{
+      position: "bottom",
+      id: "x-axis-1",
+      
+      ticks: {
+        callback: function(value) { 
+          return new Date(value).toLocaleDateString('en-GB'); 
+        },
+        min: new Date(2018,11,18).toLocaleDateString('en-GB')
+      }
+      
+  }, 
+  {
+      position: "top",
+      id: "x-axis-2",
+      ticks: {
+        callback: function(value) { 
+            return new Date(value).toLocaleTimeString(); 
+        }
+        
+      }
+  }]}
 
 }
+
+
+const Warnings = {
+  labels: this.state.members.map(x=>x.date),
+  datasets: [
+    {
+      label: 'Warnings count',
+      backgroundColor: 'rgba(255,51,0,0.2)',
+      borderColor: 'rgba(255,51,0,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: this.state.members.map(x => x.warningsCount),
+      fill:false
+    }
+  ]
+};
+
+
+const WarningOptions = {
+  title: {
+    display: true,
+    text: 'Warnings count',
+    fontSize: 26
+},
+legend: {
+  display: true,
+  position: 'bottom'
+},
+scales: {
+
+  xAxes: [
+{
+      position: "bottom",
+      id: "x-axis-1",
+      
+      ticks: {
+        callback: function(value) { 
+          return new Date(value).toLocaleDateString('en-GB'); 
+        },
+        min: new Date(2018,11,18).toLocaleDateString('en-GB')
+      }
+      
+  }, 
+  {
+      position: "top",
+      id: "x-axis-2",
+      ticks: {
+        callback: function(value) { 
+            return new Date(value).toLocaleTimeString(); 
+        }
+        
+      }
+  }]}
+
+}
+
     return (
       
 
@@ -327,6 +409,7 @@ legend: {
         <div><Line data = {sizeElements} options={title}/></div>
         <div><Line data = {elementTypes} options = {typeCountTitle} /></div>
         <div><Line data = {Sheets} options = {sheetsOptions} /></div>
+        <div><Line data = {Warnings} options = {WarningOptions} /></div>
       </Grid>
 
       </div>
