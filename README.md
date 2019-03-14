@@ -1,6 +1,6 @@
 # reactAppRvt
 
-![IMG}(https://i.imgur.com/MbEMmIC.png)
+![IMG](https://i.imgur.com/MbEMmIC.png)
 
 ## Usage
 
